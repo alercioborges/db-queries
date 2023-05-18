@@ -1,0 +1,12 @@
+SELECT
+	u.username AS "REGISTRO",
+	CONCAT(u.firstname, " ", u.lastname) AS "NOME",
+	u.email AS "E-MAIL",
+	c.name AS "COORTE"
+FROM mdl_user u
+	INNER JOIN mdl_cohort_members cm ON cm.userid = u.id
+		INNER JOIN mdl_cohort c ON c.id = cm.cohortid
+WHERE
+	c.idnumber = "Operacional" /*especificar coorte*/
+ORDER BY 
+	u.firstname, u.lastname

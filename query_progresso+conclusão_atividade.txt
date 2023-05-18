@@ -1,0 +1,8 @@
+SELECT *
+FROM mdl_course_modules_completion
+WHERE
+	userid = 133 /* ID usuário */
+	AND coursemoduleid = 390 /* ID atividade */
+
+/* Para atualizar, ir em editar configurações do curso e salvar alteações */
+	

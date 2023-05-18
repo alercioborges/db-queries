@@ -1,0 +1,13 @@
+Query que busca todos os usuario cadastrados removendos os deletados e suspensos com pelo menos u acessoao ambiente
+
+select
+	u.id,
+	concat(u.firstname, " ", u.lastname) AS "Nome Completo",
+	u.email AS "E-mail",
+	FROM_UNIXTIME(u.firstaccess, '%d/%m/%Y - %H:%i:%S') AS "Primeiro acesso"
+from mdl_user u
+where
+	u.deleted <> 1
+	and u.suspended <> 1
+	and u.firstaccess > '0'
+order by u.firstname, u.lastname

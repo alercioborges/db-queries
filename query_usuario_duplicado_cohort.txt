@@ -1,0 +1,7 @@
+SELECT
+	cm.userid
+FROM mdl_cohort_members cm	
+GROUP BY
+	cm.userid
+HAVING
+	COUNT(cm.userid) > 1

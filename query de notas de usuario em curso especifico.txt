@@ -1,0 +1,16 @@
+SELECT 
+gc.courseid, gc.parent, gc.depth, gc.path, gc.fullname "Category",
+CASE gc.aggregation
+  WHEN 0 THEN 'Mean OF Grades'
+  WHEN 2 THEN 'Median OF Grades'
+  WHEN 6 THEN 'Highest Grade'
+  WHEN 8 THEN 'Mode OF Grades'
+  WHEN 10 THEN 'Weighted Mean OF Grades'
+  WHEN 11 THEN 'Simple Weighted Mean OF Grades'
+  WHEN 12 THEN 'Mean OF Grades (WITH extra credits)'
+  WHEN 13 THEN 'SUM OF Grades'
+END AS 'aggregation name'
+,gi.itemname, gi.itemtype, gi.itemmodule, gi.iteminstance,floor(gi.aggregationcoef2*100) "weight", floor(gi.grademin), floor(gi.grademax), gi.multfactor, gi.plusfactor
+FROM mdl_grade_categories gc
+JOIN mdl_grade_items gi ON gi.categoryid = gc.id 
+WHERE gc.courseid = XXX

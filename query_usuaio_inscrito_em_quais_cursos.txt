@@ -1,0 +1,9 @@
+SELECT DISTINCT
+	subc.id
+FROM mdl_role_assignments subrs
+	INNER JOIN mdl_context sube ON subrs.contextid = sube.id
+		INNER JOIN  mdl_course subc ON subc.id = sube.instanceid
+WHERE
+	sube.contextlevel=50
+	AND subrs.roleid = 5
+	AND subrs.userid = 628 /*ID do usuario*/

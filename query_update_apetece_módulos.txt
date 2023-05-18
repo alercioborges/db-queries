@@ -1,0 +1,8 @@
+SELECT
+	"UPDATE mdl_course_sections SET summary = '",
+	s.summary, "'",
+	"WHERE id = ",
+	s.id, ";"
+FROM mdl_course_sections s
+WHERE s.summary LIKE "%ava2%"
+ORDER BY s.id

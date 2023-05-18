@@ -1,0 +1,10 @@
+SELECT
+	*
+FROM
+	mdl_logstore_standard_log l
+WHERE	
+	l.courseid = 36
+	AND l.objecttable = 'user_enrolments'
+	AND l.crud = 'd' //'d' p/ excluido e 'c' para inscrito
+ORDER BY l.id DESC
+	

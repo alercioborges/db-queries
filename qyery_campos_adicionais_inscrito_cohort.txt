@@ -1,0 +1,251 @@
+SELECT
+	u.id AS "ID do usuário",
+	u.username AS "Registro",
+	CONCAT(u.firstname, " ", u.lastname) AS "Nome",
+	ch.name AS "Coorte inscrito",
+	
+	/*folha*/
+	(
+		SELECT
+			sub_uid.data
+		FROM mdl_user_info_data sub_uid
+			INNER JOIN mdl_user sub_u ON sub_u.id = sub_uid.userid
+				INNER JOIN mdl_user_info_field sub_uif ON sub_uif.id = sub_uid.fieldid
+		WHERE
+			sub_uid.fieldid = 5
+			AND sub_u.id = u.id			
+	) AS "Folha",
+	/*fim folha*/
+	
+	/*Centro de custo*/
+	(
+		SELECT
+			sub_uid.data
+		FROM mdl_user_info_data sub_uid
+			INNER JOIN mdl_user sub_u ON sub_u.id = sub_uid.userid
+				INNER JOIN mdl_user_info_field sub_uif ON sub_uif.id = sub_uid.fieldid
+		WHERE
+			sub_uid.fieldid = 6
+			AND sub_u.id = u.id			
+	) AS "Centro de custo"
+	/*fim Centro de custo*/
+	
+FROM mdl_cohort_members cm
+	INNER JOIN mdl_user u ON u.id = cm.userid					
+		INNER JOIN mdl_cohort ch ON ch.id = cm.cohortid
+				
+WHERE
+	u.id = 38
+	or u.id =	44
+	or u.id =	45
+	or u.id =	48
+	or u.id =	49
+	or u.id =	52
+	or u.id =	53
+	or u.id =	54
+	or u.id =	55
+	or u.id =	56
+	or u.id =	57
+	or u.id =	58
+	or u.id =	59
+	or u.id =	60
+	or u.id =	61
+	or u.id =	62
+	or u.id =	83
+	or u.id =	84
+	or u.id =	85
+	or u.id =	86
+	or u.id =	87
+	or u.id =	153
+	or u.id =	154
+	or u.id =	155
+	or u.id =	164
+	or u.id =	165
+	or u.id =	166
+	or u.id =	167
+	or u.id =	169
+	or u.id =	170
+	or u.id =	173
+	or u.id =	174
+	or u.id =	176
+	or u.id =	178
+	or u.id =	179
+	or u.id =	181
+	or u.id =	182
+	or u.id =	183
+	or u.id =	184
+	or u.id =	185
+	or u.id =	186
+	or u.id =	187
+	or u.id =	208
+	or u.id =	209
+	or u.id =	211
+	or u.id =	232
+	or u.id =	233
+	or u.id =	234
+	or u.id =	235
+	or u.id =	236
+	or u.id =	237
+	or u.id =	244
+	or u.id =	245
+	or u.id =	246
+	or u.id =	247
+	or u.id =	248
+	or u.id =	249
+	or u.id =	250
+	or u.id =	251
+	or u.id =	252
+	or u.id =	276
+	or u.id =	277
+	or u.id =	278
+	or u.id =	279
+	or u.id =	293
+	or u.id =	294
+	or u.id =	295
+	or u.id =	296
+	or u.id =	297
+	or u.id =	298
+	or u.id =	299
+	or u.id =	304
+	or u.id =	312
+	or u.id =	314
+	or u.id =	315
+	or u.id =	316
+	or u.id =	317
+	or u.id =	318
+	or u.id =	319
+	or u.id =	320
+	or u.id =	321
+	or u.id =	322
+	or u.id =	323
+	or u.id =	324
+	or u.id =	325
+	or u.id =	326
+	or u.id =	327
+	or u.id =	328
+	or u.id =	329
+	or u.id =	330
+	or u.id =	331
+	or u.id =	332
+	or u.id =	333
+	or u.id =	334
+	or u.id =	335
+	or u.id =	336
+	or u.id =	337
+	or u.id =	338
+	or u.id =	339
+	or u.id =	342
+	or u.id =	343
+	or u.id =	344
+	or u.id =	345
+	or u.id =	346
+	or u.id =	347
+	or u.id =	348
+	or u.id =	349
+	or u.id =	350
+	or u.id =	351
+	or u.id =	352
+	or u.id =	404
+	or u.id =	405
+	or u.id =	406
+	or u.id =	407
+	or u.id =	408
+	or u.id =	409
+	or u.id =	410
+	or u.id =	411
+	or u.id =	412
+	or u.id =	414
+	or u.id =	415
+	or u.id =	416
+	or u.id =	417
+	or u.id =	418
+	or u.id =	516
+	or u.id =	517
+	or u.id =	521
+	or u.id =	522
+	or u.id =	523
+	or u.id =	585
+	or u.id =	586
+	or u.id =	588
+	or u.id =	589
+	or u.id =	590
+	or u.id =	591
+	or u.id =	592
+	or u.id =	593
+	or u.id =	594
+	or u.id =	604
+	or u.id =	605
+	or u.id =	606
+	or u.id =	607
+	or u.id =	618
+	or u.id =	619
+	or u.id =	620
+	or u.id =	621
+	or u.id =	622
+	or u.id =	623
+	or u.id =	624
+	or u.id =	634
+	or u.id =	635
+	or u.id =	640
+	or u.id =	641
+	or u.id =	642
+	or u.id =	644
+	or u.id =	645
+	or u.id =	646
+	or u.id =	1660
+	or u.id =	1661
+	or u.id =	1662
+	or u.id =	1664
+	or u.id =	1665
+	or u.id =	1666
+	or u.id =	1670
+	or u.id =	1671
+	or u.id =	1672
+	or u.id =	1673
+	or u.id =	1674
+	or u.id =	1675
+	or u.id =	1676
+	or u.id =	1677
+	or u.id =	1678
+	or u.id =	1679
+	or u.id =	1680
+	or u.id =	1697
+	or u.id =	1698
+	or u.id =	1699
+	or u.id =	1700
+	or u.id =	1701
+	or u.id =	1702
+	or u.id =	1703
+	or u.id =	1717
+	or u.id =	1719
+	or u.id =	1721
+	or u.id =	2284
+	or u.id =	2285
+	or u.id =	2286
+	or u.id =	2288
+	or u.id =	2289
+	or u.id =	2293
+	or u.id =	2294
+	or u.id =	2295
+	or u.id =	2299
+	or u.id =	2300
+	or u.id =	2301
+	or u.id =	2302
+	or u.id =	2303
+	or u.id =	2304
+	or u.id =	2305
+	or u.id =	2306
+	or u.id =	2307
+	or u.id =	2308
+	or u.id =	2309
+	or u.id =	2310
+	or u.id =	2311
+	or u.id =	2342
+	or u.id =	2343
+	or u.id =	2344
+	or u.id =	2345
+	or u.id =	2346
+	or u.id =	2347
+	or u.id =	2348
+	or u.id =	2349
+

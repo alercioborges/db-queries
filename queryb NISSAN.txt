@@ -1,0 +1,15 @@
+#sessões autenticadas no dwply
+select DISTINCT
+	s.id
+from
+	dpres_log l
+		join dpres_authsessions s on ( s.id = l.authsessionid )
+		join dpres_sessions se on (se.id = l.mainsessionid)
+	where
+	l.datahora >= '2018-01-24 09:58:00' and l.datahora <= '2018-01-24 14:02:00'
+		and l.appmodule = 'assistirsala' and l.idresource = 37
+		and se.ip <> '186.192.164.60';
+
+/*--------------------------------------------------------------------------------------------------*/
+
+

@@ -1,0 +1,11 @@
+SELECT
+	u.username AS "NÚMERO DO REGISTRO/LOGIN",
+	CONCAT(u.firstname, ' ', u.lastname) AS "NOME COMPLETO",
+	CASE
+		WHEN u.lastaccess = 0 THEN "NUNCA ACESSOU"
+	ELSE FROM_UNIXTIME(u.lastaccess, '%d/%m/%Y %H:%i:%S')
+	END AS "DATA DO ÚLTIMO ACESSO"
+FROM mdl_user u
+WHERE u.id <> 1
+	AND u.id <> 2
+ORDER BY u.firstname, u.lastname

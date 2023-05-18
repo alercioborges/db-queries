@@ -1,0 +1,12 @@
+SELECT
+	CONCAT(u.firstname, ' ', u.lastname) AS "NOME COMPLETO",	
+	u.email AS "E-MAIL",
+	c.fullname AS "CURSO",
+	cf.value AS "CARGA HORÁRIA"	 	
+FROM mdl_role_assignments rs
+	INNER JOIN mdl_user u ON u.id=rs.userid
+		INNER JOIN mdl_context e ON rs.contextid=e.id
+			INNER JOIN  mdl_course c ON c.id = e.instanceid
+				INNER JOIN  mdl_customfield_data cf ON cf.id = e.instanceid	
+WHERE e.contextlevel=50 AND rs.roleid=5 AND c.id <> 1 AND u.id <> 2
+ORDER BY u.firstname, u.lastname

@@ -1,0 +1,7 @@
+SELECT
+	bbb.id,
+	bbb.name AS "Nome atividade",	
+	FROM_UNIXTIME(bbb.timecreated, '%d/%m/%Y %H:%i:%S') AS "Data de criação"
+	from mdl_bigbluebuttonbn bbb
+WHERE bbb.timecreated >= 1599417448
+ORDER BY bbb.timecreated

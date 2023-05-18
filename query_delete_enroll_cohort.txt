@@ -1,0 +1,1 @@
+DELETE FROM mdl_cohort_members WHERE userid = 38 AND cohortid = (num cohortid)

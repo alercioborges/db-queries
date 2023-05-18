@@ -1,0 +1,53 @@
+Query exibe nota final dos estudantes de um curso especifico
+
+SELECT
+
+c.id as Course_Id,
+
+c.fullname AS fullname,
+
+u.id AS User_Id,
+
+u.firstname AS firstname, 
+
+u.lastname AS lastname, 
+
+ 
+
+COALESCE(ROUND(gg.finalgrade,2),0) as finalgrade
+
+FROM mdl_user u
+
+INNER JOIN mdl_role_assignments ra ON ra.userid = u.id
+
+INNER JOIN mdl_context ct ON ct.id = ra.contextid
+
+INNER JOIN mdl_course c ON c.id = ct.instanceid
+
+INNER JOIN mdl_role r ON r.id = ra.roleid
+
+LEFT JOIN
+
+(
+
+SELECT
+
+u.id AS userid,c.id as courseid,
+
+g.finalgrade AS finalgrade
+
+FROM mdl_user u
+
+JOIN mdl_grade_grades g ON g.userid = u.id
+
+JOIN mdl_grade_items gi ON g.itemid =  gi.id
+
+JOIN mdl_course c ON c.id = gi.courseid where gi.itemtype = 'course'
+
+and g.finalgrade >= 70.00 #linha que define especificações da nota final
+
+) gg ON gg.userid = u.id 
+
+WHERE c.id =36
+
+order by u.firstname, u.lastname

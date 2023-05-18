@@ -1,0 +1,17 @@
+SELECT
+	u.id,
+	u.firstname,
+	u.lastname,
+	u.email,
+	c.course,
+	co.shortname,
+	c.timecompleted
+FROM
+	mdl_course_completions c
+		INNER JOIN mdl_user u ON c.userid = u.id
+			INNER JOIN mdl_course co ON co.id = c.course
+			 
+WHERE
+	c.timecompleted > 0
+	AND u.deleted = 0
+	AND c.course = 20

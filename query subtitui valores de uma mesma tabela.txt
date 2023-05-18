@@ -1,0 +1,6 @@
+select
+CASE WHEN t.tipo = "cel" THEN REPLACE(t.tipo, "cel", "CELULAR")
+WHEN t.tipo = "res" THEN REPLACE(t.tipo, "res", 'RESIDENCIAL')	
+WHEN t.tipo = "com" THEN REPLACE(t.tipo, "com", "COMERCIAL") END AS "TIPO",
+	t.numero
+from telefone t

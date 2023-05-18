@@ -1,0 +1,5 @@
+select distinct
+	u.user_ext_name AS "Nome Completo",
+	FROM_UNIXTIME(u.timemodified, '%d/%m/%Y %H:%i:%S') as "Data da Ultima Modificação"
+from mdl_sync_ext_users u
+order by u.user_ext_name;

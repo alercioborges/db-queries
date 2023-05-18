@@ -1,0 +1,17 @@
+SELECT
+	CONCAT(
+	'INSERT INTO dw_user VALUES (',
+	'NULL', ', ',
+	'"', u.email, '"', ', ',
+	'"', u.firstname, '"', ', ',
+	'"', u.lastname, '"', ', ',
+	'"', u.email, '"', ', ',
+	'"', u.password, '"', ', ',
+	'0', ', ',
+	'"', NOW(), '"', ', ',
+	'"', NOW(), '"', ');'
+	)
+FROM mdl_user u
+WHERE 
+	u.deleted <> 1	
+ORDER BY u.id

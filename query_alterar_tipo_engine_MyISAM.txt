@@ -1,0 +1,3 @@
+Alteração do tipo de engine MyISAM em InnoDB
+
+ALTER TABLE mdl_log ENGINE=InnoDB;

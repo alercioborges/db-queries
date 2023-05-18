@@ -1,0 +1,10 @@
+Query que agrupa os nume de usuarios duplicados
+
+select 
+concat(u.firstname, " ", u.lastname) AS "Nome colpleto",
+count(*) AS quantidade
+from mdl_user u
+where u.deleted <> 1
+GROUP by  concat(u.firstname, " ", u.lastname)
+HAVING quantidade >= 2
+order by quantidade desc, concat(u.firstname, " ", u.lastname) asc;

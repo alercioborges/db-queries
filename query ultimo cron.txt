@@ -1,0 +1,5 @@
+Query para ver a data do último cron executado:
+
+select
+	FROM_UNIXTIME(max(m.lastcron), '%d/%m/%Y às %H:%i:%S') AS "ùltimo cron"
+from  mdl_modules m;

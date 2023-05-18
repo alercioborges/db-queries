@@ -1,0 +1,11 @@
+SELECT
+	wpu.ID,
+	(SELECT subum.meta_value FROM wp_usermeta subum WHERE subum.meta_key = "first_name" AND subum.user_id = 49) AS nome,
+	(SELECT subum.meta_value FROM wp_usermeta subum WHERE subum.meta_key = "last_name" AND subum.user_id = 49) AS sobrenome,
+	(SELECT subum.meta_value FROM wp_usermeta subum WHERE subum.meta_key = "billing_email" AND subum.user_id = 49) AS email,
+	CONCAT((SELECT subum.meta_value FROM wp_usermeta subum WHERE subum.meta_key = "billing_city" AND subum.user_id = 49), " / ", (SELECT subum.meta_value FROM wp_usermeta subum WHERE subum.meta_key = "billing_state" AND subum.user_id = 49)) AS cidade,
+	wpu.user_pass AS pass,
+	wpu.user_registered
+FROM wp_users wpu
+WHERE
+	wpu.ID = 49

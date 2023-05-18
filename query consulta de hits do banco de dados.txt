@@ -1,0 +1,7 @@
+SET @inicio = '2020-11-23 00:00:00'; //definir data de inicio
+SET @fim = '2020-11-23 23:59:59'; 		definir data de término
+
+select from_unixtime(l.timecreated,'%Y-%m-%d %H:%i')as hora, count(l.timecreated) as hits from mdl_logstore_standard_log l
+WHERE l.timecreated >= unix_timestamp(@inicio) and l.timecreated <= unix_timestamp(@fim)
+group by hora
+order by hora desc

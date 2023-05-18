@@ -1,0 +1,4 @@
+ SELECT COUNT(ct.id) AS coursecount
+ FROM mdl_course_categories ct
+ INNER JOIN mdl_course c ON c.category=ct.id
+ GROUP BY ct.id,ct.name ORDER BY COUNT(ct.id) DESC

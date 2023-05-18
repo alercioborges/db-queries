@@ -1,0 +1,17 @@
+SELECT 
+	u.id,
+	concat(u.firstname, " ", u.lastname) AS "NOME"	
+FROM mdl_role_assignments rs
+	INNER JOIN mdl_user u ON u.id=rs.userid
+		INNER JOIN mdl_context e ON rs.contextid=e.id
+			INNER JOIN mdl_course c ON c.id = e.instanceid
+				INNER JOIN mdl_cohort_members cm ON cm.userid = u.id
+WHERE
+	e.contextlevel = 50
+	AND u.deleted <> 1
+	AND u.id <> 1
+	AND e.instanceid = 20
+	AND cm.cohortid = 3
+ORDER BY
+	u.firstname,
+	u.lastname

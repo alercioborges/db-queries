@@ -1,0 +1,6 @@
+SELECT
+	TIMEDIFF(TIME(FROM_UNIXTIME(u.lastaccess)), TIME(FROM_UNIXTIME(u.lastlogin)))
+from mdl_user u
+WHERE u.id = 2
+
+https://www.devmedia.com.br/funcoes-de-manipulacao-de-hora-no-mysql/25558

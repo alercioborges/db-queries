@@ -1,0 +1,6 @@
+SELECT
+	*
+FROM mdl_logstore_standard_log l
+WHERE l.userid = 3028 /* ID do usuário */
+	AND l.courseid = 20 /* ID do curso */
+	AND l.contextinstanceid = 921 /* ID da atividade */

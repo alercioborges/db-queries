@@ -1,0 +1,36 @@
+SELECT
+	gi.courseid AS "ID do curso",
+	IFNULL(gi.itemname, "TOTAL") AS "Atividade",
+	gi.grademin AS "Nota minima",
+	gi.grademax AS "Nota maxima",	
+	gi.gradepass AS "Nota para aprovaão",
+	gi.weightoverride "Peso/Habilitado"
+FROM mdl_grade_items gi
+WHERE gi.courseid = 23
+
+---------------------------------------------------------------------
+SELECT
+	gi.courseid AS "ID do curso",
+	IFNULL(gi.itemname, "TOTAL") AS "Atividade",
+	gi.grademin AS "Nota minima",
+	gi.grademax AS "Nota maxima",	
+	gi.gradepass AS "Nota para aprovaão",
+	gi.weightoverride "Peso/Habilitado"
+FROM
+	mdl_grade_items gi
+WHERE
+	gi.weightoverride <> 1
+	AND gi.courseid < 124
+	AND gi.itemtype = "mod"
+ORDER BY
+	gi.courseid
+
+---------------------------------------------------
+
+UPDATE 
+	mdl_grade_items 
+SET weightoverride = 1
+WHERE
+	courseid < 124
+	AND itemtype = "mod"
+
